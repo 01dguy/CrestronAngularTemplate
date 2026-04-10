@@ -1,6 +1,6 @@
 // Currently to make this work I'm keeping everything in ' ' as main instead of media.
 
-import { NgModule, NgZone } from '@angular/core';
+import { NgModule, NgZone, OnDestroy } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { SecurityPageComponent } from './security-page/security-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'lighting-page', component: LightingPageComponent },
   { path: 'shades-page', component: ShadesPageComponent },
   { path: 'cameras-page', component: CamerasPageComponent },
-  { path: '*', component: HomePageComponent },
+  { path: '**', component: HomePageComponent },
 ];
 
 @NgModule({
@@ -30,7 +30,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { initialNavigation: 'disabled' })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { 
+export class AppRoutingModule implements OnDestroy { 
 
   // Property declarations with non-null assertion operators
   mainPageVisibilitySubscription!: string;
@@ -156,6 +156,39 @@ export class AppRoutingModule {
     this.ngZone.run(() =>
       // Navigate to the route.
       this.router.navigate([path], { skipLocationChange: true })
+    );
+  }
+
+  public ngOnDestroy(): void {
+    CrComLib.unsubscribeState(
+      'b',
+      'HeaderBar.HomePageVisibilityJoin',
+      this.homePageVisibilitySubscription
+    );
+    CrComLib.unsubscribeState(
+      'b',
+      'HeaderBar.MainPageVisibilityJoin',
+      this.mainPageVisibilitySubscription
+    );
+    CrComLib.unsubscribeState(
+      'b',
+      'HeaderBar.SecurityPageVisibilityJoin',
+      this.securityPageVisibilitySubscription
+    );
+    CrComLib.unsubscribeState(
+      'b',
+      'HeaderBar.LightingPageVisibilityJoin',
+      this.lightingPageVisibilitySubscription
+    );
+    CrComLib.unsubscribeState(
+      'b',
+      'HeaderBar.ShadesPageVisibilityJoin',
+      this.shadesPageVisibilitySubscription
+    );
+    CrComLib.unsubscribeState(
+      'b',
+      'HeaderBar.CamerasPageVisibilityJoin',
+      this.camerasPageVisibilitySubscription
     );
   }
 

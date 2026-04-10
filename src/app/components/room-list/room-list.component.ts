@@ -114,14 +114,14 @@ export class RoomListComponent implements OnInit, OnDestroy {
         `MainPage.RoomList.Room${i + 1}FB`,
         this.selectedSubscription[i]
       );
-
-      // Unsubscribe from the room join when the component is destroyed.
-      CrComLib.unsubscribeState(
-        's',
-        'HeaderBar.RoomNameText',
-         this.roomSubscription
-      );
     }
+
+    // Unsubscribe from the room join when the component is destroyed.
+    CrComLib.unsubscribeState(
+      's',
+      'HeaderBar.RoomNameText',
+      this.roomSubscription
+    );
   }
 
   // Update a room button by its original index (not UI index)

@@ -14,8 +14,10 @@ export class TitleService {
 
   setCurrentPageVisibility(page: string, isVisible: boolean) {
     const currentPageVisibility = this.pageVisibilitySource.getValue();
-    currentPageVisibility[page] = isVisible;
-    this.pageVisibilitySource.next(currentPageVisibility);
+    this.pageVisibilitySource.next({
+      ...currentPageVisibility,
+      [page]: isVisible
+    });
     console.log(`${page}Visibility$`, isVisible); //debug
   }
 }

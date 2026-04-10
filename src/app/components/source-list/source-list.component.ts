@@ -30,7 +30,7 @@ export class SourceListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.SourceButton = signal(
-      new Array(this.sources).fill(new SourceButton())
+      new Array(this.sources).fill(null).map(() => new SourceButton())
     );
 
     for (let i = 0; i < this.sources; i++) {

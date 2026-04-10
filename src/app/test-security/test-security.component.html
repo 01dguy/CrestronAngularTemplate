@@ -1,0 +1,44 @@
+<!-- security-system.component.html -->
+<div class="security-system-container">
+    <!-- Left Sidebar with Feature Buttons -->
+    <div class="sidebar">
+      <button class="feature-btn" (click)="activateFeature('arm')">Arm System</button>
+      <button class="feature-btn" (click)="activateFeature('disarm')">Disarm System</button>
+      <button class="feature-btn" (click)="activateFeature('status')">System Status</button>
+      <button class="feature-btn" (click)="activateFeature('zones')">Zone Check</button>
+      <button class="feature-btn" (click)="activateFeature('alert')">Silent Alert</button>
+      <button class="feature-btn" (click)="activateFeature('settings')">Settings</button>
+    </div>
+  
+    <!-- Main Display Area -->
+    <div class="main-display">
+      <!-- Text Feedback Window -->
+      <div class="feedback-window">
+        <p>{{ systemFeedback }}</p>
+      </div>
+  
+      <!-- Keypad -->
+      <div class="keypad">
+        <div class="keypad-row">
+          <button class="key" (click)="appendNumber('1')">1</button>
+          <button class="key" (click)="appendNumber('2')">2</button>
+          <button class="key" (click)="appendNumber('3')">3</button>
+        </div>
+        <div class="keypad-row">
+          <button class="key" (click)="appendNumber('4')">4</button>
+          <button class="key" (click)="appendNumber('5')">5</button>
+          <button class="key" (click)="appendNumber('6')">6</button>
+        </div>
+        <div class="keypad-row">
+          <button class="key" (click)="appendNumber('7')">7</button>
+          <button class="key" (click)="appendNumber('8')">8</button>
+          <button class="key" (click)="appendNumber('9')">9</button>
+        </div>
+        <div class="keypad-row">
+          <button class="key" (click)="clearCode()">C</button>
+          <button class="key" (click)="appendNumber('0')">0</button>
+          <button class="key" (click)="submitCode()">✓</button>
+        </div>
+      </div>
+    </div>
+  </div>

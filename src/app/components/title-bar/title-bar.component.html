@@ -1,0 +1,29 @@
+<!-- We have to put @pageIn fade into each div because they load based on *ngIf -->
+
+<div class="title-bar">
+  <app-menu *ngIf="isHomePageVisible" @pageIn/>
+    
+    <button class="title-bar__button--menu" (click)="returnClicked()" *ngIf="!isHomePageVisible" @pageIn>
+      <img
+        class="title-bar__button--return__icon"
+        src="assets/images/icons/return.svg"
+      />
+    </button>
+  <div class="title-bar__divider" *ngIf="!isHomePageVisible" @pageIn></div>
+    <button class="title-bar__button--power" (click)="powerClicked()" *ngIf="isMainPageVisible" @pageIn>
+      <img
+        class="title-bar__button--power__icon"
+        src="assets/images/icons/power.svg"
+      />
+    </button>
+
+  <div class="title-bar__divider" *ngIf="isMainPageVisible" @pageIn></div>
+
+  <!-- For some unknown reason I can't get pageIn animation to work here. -->
+  <span class="title-bar__page-name" @pageIn>{{ page() }}</span>
+
+  <!-- For room-list dropdown on title-bar -->
+  <app-room-list class="title-bar__room-name" *ngIf="isMainPageVisible" @pageIn />
+
+  <app-weather class="title-bar__weather" @pageIn></app-weather>
+</div>

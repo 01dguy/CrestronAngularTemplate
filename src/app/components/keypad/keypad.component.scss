@@ -1,0 +1,35 @@
+@import 'buttons';
+@import 'mixins';
+
+.keypad {
+    aspect-ratio: 2 / 3;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 0.8rem; // gap between buttons
+    position: relative;
+    min-width: 0;
+}
+
+.keypad button {
+    @extend .crestron-button;
+    padding: 1.2vw; // Modifies shape of button for good sizing of entire keypad.
+    font-size: 2rem; // font size of the text on the button
+
+    img {
+        // Image on extra button size.
+        height: 90%;
+        width: 90%;
+    }
+}
+
+.empty-button {
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    cursor: default !important;
+    color: transparent !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+}

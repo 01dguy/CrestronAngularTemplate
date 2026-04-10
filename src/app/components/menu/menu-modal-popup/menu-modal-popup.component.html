@@ -1,0 +1,15 @@
+@if(active()) {
+    <div class="menu-app" @fadeIn @fadeOut (click)="close()">
+        <div class="menu-app__container" (click)="$event.stopPropagation();" (pointerdown)="open();" >
+            <button class="menu-app__button" (click)="setTheme('light')">Light Theme</button>
+            <button class="menu-app__button" (click)="setTheme('dark')">Dark Theme</button>
+            <button class="menu-app__button" (click)="setTheme('blue')">Blue Theme</button>
+            <!--Display current ip address of system-->
+            <div class="menu-app__ip" style="margin-top: 2rem; text-align: center; font-size: 0.9em; color: #888;">
+                IP Address: {{ ipAddress }}
+            </div>
+        </div>
+    </div>
+} 
+
+<!-- (pointerdown) prevents the pop-up from timing out while being interacted with -->

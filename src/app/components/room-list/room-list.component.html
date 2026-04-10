@@ -1,0 +1,24 @@
+
+  <!-- Non Drag and Drop -->
+  <!-- <div (click)="closeDropdown()">
+    <button class="dropdown-button" [class.dropdown-active]="dropdownVisible" (click)="toggleDropdown($event)">
+      {{ room() || 'Select Room' }}
+    </button>
+    <div class="dropdown-content" [style.display]="dropdownVisible ? 'block' : 'none'" (click)="$event.stopPropagation()">
+      <a *ngFor="let button of RoomButton(); let i = index" (click)="selectRoom(i)" [class.selected]="button.state">
+        {{ button.title }}
+      </a>
+    </div>
+  </div> -->
+
+  <!-- Drag and Drop -->
+  <div (click)="closeDropdown()">
+    <button class="dropdown-button" [class.dropdown-active]="dropdownVisible" (click)="toggleDropdown($event)">
+      {{ room() || 'Select Room' }}
+    </button>
+    <div class="dropdown-content" [style.display]="dropdownVisible ? 'block' : 'none'" (click)="$event.stopPropagation()" cdkDropList (cdkDropListDropped)="drop($event)">
+      <a *ngFor="let button of RoomButton(); let i = index" (click)="selectRoom(i)" [class.selected]="button.state" cdkDrag>
+        {{ button.title }}
+      </a>
+    </div>
+  </div>

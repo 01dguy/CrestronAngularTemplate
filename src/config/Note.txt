@@ -1,0 +1,2 @@
+This is the main contract for talking to SIMPL# program. CHD file is for SIMPL.
+Master.cse2j is the new contract I created, and is converted to contract.cse2j on build.

@@ -1,0 +1,98 @@
+@import 'buttons';
+@import 'mixins';
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.feedback-window {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #fff;
+  background: rgb(64, 64, 64, 0.5);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  width: 36rem;
+  max-width: 90vw;
+  min-width: 20rem;
+  min-height: 2.2rem;
+}
+
+.keypad-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 36rem;
+  min-width: 20rem;
+  height: 22rem;
+  min-height: 14rem;
+  margin: 2rem auto;
+  gap: 2rem;
+}
+
+.keypad {
+  flex: 2 1 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  width: 100%;
+  height: 100%;
+}
+
+.keypad-button,
+.enter-button,
+.side-button {
+  @extend .crestron-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.keypad-button {
+  padding: 0;
+  font-size: 1.4rem;
+  width: 100%;
+  height: 100%;
+}
+
+.enter-button {
+  grid-column: span 2;
+}
+
+.side-buttons {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: stretch;
+  height: 100%;
+  width: 100%;
+}
+
+.side-button {
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  min-width: 60px;
+  min-height: 40px;
+}
+
+.keypad-button:active,
+.enter-button:active,
+.side-button:active {
+  transform: scale(1.06);
+}

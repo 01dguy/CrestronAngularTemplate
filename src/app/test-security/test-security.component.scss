@@ -1,0 +1,82 @@
+/* security-system.component.css */
+.security-system-container {
+    display: flex;
+    height: 400px;
+    width: 600px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .sidebar {
+    width: 150px;
+    background-color: #2c3e50;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    max-width: 150%;
+  }
+
+  .sidebar > * {
+    flex-grow: 1; // Allow child elements to grow and fill available space
+    max-width: 100%;
+}
+  
+  .feature-btn {
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .feature-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .main-display {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .feedback-window {
+    height: 100px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .keypad {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .keypad-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .key {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .key:hover {
+    background-color: #d5dbde;
+  }

@@ -1,0 +1,45 @@
+[x] Mute functionality on volume.component.ts
+[x] How to modify weather city 
+[x] Modify Power Pop-up for SIMPL
+[x] Create Volume footer with identical programming
+[x] Figure out router and create Home Page
+[x] Figure out Switch/Case logic on main-page.component.html.
+[x] Add start-page stuff back to project when switching to router.
+[x] Get a better understanding of what visibility joins do.
+[ ] Currently Power Pop-Up logic is in SIMPL, Figure out how to make it work in Angular
+[x] Figure out Contract Editor for creating CHD file for SIMPL
+[ ] Figure out press area on custom HTML components. How it's defined.
+[x] Play around with configuring different components on UI for different projects.
+[x] Create Keypad Component.
+[x] Test if I need multiple Component imports, or just on the popups(source pages)
+[x] Look at removing standalone from all base components and including them in the
+      NgModule Declarations and then import AppModule where needed.
+[ ] Figure out why transport buttons look different in build.
+[x] Modify title-bar to work on all pages minus the room text and power pop-up
+[x] Remove Title Service from Router module and any place else it's not needed.
+[x] Make better svg graphic for return button.
+[ ] Modify keypad so extra button is full bottom row and looks a little nicer.
+[ ] Figure out how to set Title-Bar elements based on real-time visibility and not button press logic.
+[x] Add Room box to right side of title-bar only visible when main-page is selected.
+[x] Make the Room box a dropdown menu with available rooms.
+[x] Create indirect text selection similar to source buttons for rooms.
+[x] Double check if I have duplicate programming on main-page for source-list
+[x] Disable Weather widget in header bar from fading in and out.
+[x] Add hamburger menu to home page for theme options and system wide options.
+[x] Create Menu pop-up page similar to power pop-up
+[x] Create page animations to smooth transitions.
+[x] Clean up router animation code.
+[x] Get current room to populate room dropdown (SIMPL)
+[x] Create Crosspoint Template for proper room and source switching (SIMPL)
+[x] Finish router and remaining (placeholder) components for all pages.
+[ ] Build out all (placeholder) components with generic control
+[x] Consider making a media-page component and reworking how the @switch/case logic
+    works. Use *ng logic instead. 
+[x] Make room dropdown close when clicking outside box
+[ ] Consider making Weather and Menu modal popups close with eventListener Click
+    like how it's done with room-list component.
+[x] Sources are following through crosspoint, but need to make no source work properly
+    and clear 
+[x] Add background color, image and other stuff in theme switcher in
+    menu-modal-popup.component.
+[x] Fix D-Pad colors with theme switcher

@@ -1,0 +1,500 @@
+{
+	"name": "Master",
+	"timestamp": "2025-06-29 11:19:12.941",
+	"version": "1.0.0.0",
+	"schema_version": 1,
+	"extra_value": "MasterTemplate Contract",
+	"signals": {
+		"states": {
+			"boolean": {
+				"1": {
+					"1": "MainPage.MutedFeedbackVisibility",
+					"2": "MainPage.PowerOffPopUpVisibility"
+				},
+				"2": {
+					"1": "MainPage.VolumeButtonList.VolumeUpPressFB",
+					"2": "MainPage.VolumeButtonList.VolumeDownPressFB",
+					"3": "MainPage.VolumeButtonList.VolumeMuteFB"
+				},
+				"3": {
+					"1": "MainPage.SourceList.Source1FB",
+					"2": "MainPage.SourceList.Source2FB",
+					"3": "MainPage.SourceList.Source3FB",
+					"4": "MainPage.SourceList.Source4FB",
+					"5": "MainPage.SourceList.Source5FB",
+					"6": "MainPage.SourceList.Source6FB",
+					"7": "MainPage.SourceList.Source7FB",
+					"8": "MainPage.SourceList.Source8FB",
+					"9": "MainPage.SourceList.NoneSelectedFB"
+				},
+				"4": {
+					"1": "MainPage.RoomList.Room1FB",
+					"2": "MainPage.RoomList.Room2FB",
+					"3": "MainPage.RoomList.Room3FB",
+					"4": "MainPage.RoomList.Room4FB",
+					"5": "MainPage.RoomList.Room5FB",
+					"6": "MainPage.RoomList.Room6FB",
+					"7": "MainPage.RoomList.Room7FB",
+					"8": "MainPage.RoomList.Room8FB",
+					"9": "MainPage.RoomList.Room9FB",
+					"10": "MainPage.RoomList.Room10FB",
+					"11": "MainPage.RoomList.Room11FB",
+					"12": "MainPage.RoomList.Room12FB",
+					"13": "MainPage.RoomList.Room13FB",
+					"14": "MainPage.RoomList.Room14FB",
+					"15": "MainPage.RoomList.Room15FB",
+					"16": "MainPage.RoomList.Room16FB"
+				},
+				"5": {
+					"1": "HeaderBar.PowerButtonFB"
+				},
+				"6": {
+					"1": "HeaderBar.Menu.ThemeFB",
+					"2": "HeaderBar.Menu.SystemSettingsFB"
+				},
+				"7": {
+					"1": "PowerPopUp.NoButtonFB",
+					"2": "PowerPopUp.YesButtonFB",
+					"3": "PowerPopUp.WholehouseOffPressFB"
+				},
+				"8": {
+					"1": "MediaControl.DpadUpFB",
+					"2": "MediaControl.DpadDownFB",
+					"3": "MediaControl.DpadLeftFB",
+					"4": "MediaControl.DpadRightFB",
+					"5": "MediaControl.DpadEnterFB",
+					"6": "MediaControl.BackButtonFB",
+					"7": "MediaControl.MenuButtonFB",
+					"8": "MediaControl.PlayButtonFB",
+					"9": "MediaControl.PauseButtonFB",
+					"10": "MediaControl.StopButtonFB",
+					"11": "MediaControl.FastForwardButtonFB",
+					"12": "MediaControl.RewindButtonFB",
+					"13": "MediaControl.TrackForwardButtonFB",
+					"14": "MediaControl.TrackBackButtonFB",
+					"15": "MediaControl.RecordButtonFB",
+					"16": "MediaControl.Keypad0FB",
+					"17": "MediaControl.Keypad1FB",
+					"18": "MediaControl.Keypad2FB",
+					"19": "MediaControl.Keypad3FB",
+					"20": "MediaControl.Keypad4FB",
+					"21": "MediaControl.Keypad5FB",
+					"22": "MediaControl.Keypad6FB",
+					"23": "MediaControl.Keypad7FB",
+					"24": "MediaControl.Keypad8FB",
+					"25": "MediaControl.Keypad9FB",
+					"26": "MediaControl.KeypadStarFB",
+					"27": "MediaControl.KeypadPoundFB",
+					"28": "MediaControl.KeypadExtraFB"
+				},
+				"9": {
+					"14": "CH5Keypad.HideAsteriskButton",
+					"15": "CH5Keypad.HidePoundButton",
+					"16": "CH5Keypad.ExtraButtonShow"
+				}
+			},
+			"numeric": {
+				"1": {
+					"1": "MainPage.VolumeBarFB"
+				}
+			},
+			"string": {
+				"1": {
+					"1": "MainPage.CurrentSourceText"
+				},
+				"3": {
+					"1": "MainPage.SourceList.Source1Text",
+					"2": "MainPage.SourceList.Source2Text",
+					"3": "MainPage.SourceList.Source3Text",
+					"4": "MainPage.SourceList.Source4Text",
+					"5": "MainPage.SourceList.Source5Text",
+					"6": "MainPage.SourceList.Source6Text",
+					"7": "MainPage.SourceList.Source7Text",
+					"8": "MainPage.SourceList.Source8Text"
+				},
+				"4": {
+					"1": "MainPage.RoomList.Room1Text",
+					"2": "MainPage.RoomList.Room2Text",
+					"3": "MainPage.RoomList.Room3Text",
+					"4": "MainPage.RoomList.Room4Text",
+					"5": "MainPage.RoomList.Room5Text",
+					"6": "MainPage.RoomList.Room6Text",
+					"7": "MainPage.RoomList.Room7Text",
+					"8": "MainPage.RoomList.Room8Text",
+					"9": "MainPage.RoomList.Room9Text",
+					"10": "MainPage.RoomList.Room10Text",
+					"11": "MainPage.RoomList.Room11Text",
+					"12": "MainPage.RoomList.Room12Text",
+					"13": "MainPage.RoomList.Room13Text",
+					"14": "MainPage.RoomList.Room14Text",
+					"15": "MainPage.RoomList.Room15Text",
+					"16": "MainPage.RoomList.Room16Text"
+				},
+				"5": {
+					"1": "HeaderBar.RoomNameText",
+					"2": "HeaderBar.PageNameText"
+				},
+				"6": {
+					"1": "HeaderBar.Menu.IPAddressText"
+				},
+				"10": {
+					"1": "AirMediaInfo.AirmediaAddressFb",
+					"2": "AirMediaInfo.AirmediaPinFb"
+				},
+				"11": {
+					"1": "NvxInfo.NvxAddressFb"
+				},
+				"12": {
+					"1": "Zones.Room1Name",
+					"2": "Zones.Room2Name",
+					"3": "Zones.Room3Name",
+					"4": "Zones.Room4Name",
+					"5": "Zones.Room5Name",
+					"6": "Zones.Room6Name",
+					"7": "Zones.Room7Name",
+					"8": "Zones.Room8Name",
+					"9": "Zones.Room9Name",
+					"10": "Zones.Room10Name",
+					"11": "Zones.Room11Name",
+					"12": "Zones.Room12Name",
+					"13": "Zones.Room13Name",
+					"14": "Zones.Room14Name",
+					"15": "Zones.Room15Name",
+					"16": "Zones.Room16Name",
+					"17": "Zones.Room17Name",
+					"18": "Zones.Room18Name",
+					"19": "Zones.Room19Name",
+					"20": "Zones.Room20Name",
+					"21": "Zones.Room21Name",
+					"22": "Zones.Room22Name",
+					"23": "Zones.Room23Name",
+					"24": "Zones.Room24Name"
+				}
+			}
+		},
+		"events": {
+			"boolean": {
+				"HeaderBar.PowerButtonPress": {
+					"joinId": 1,
+					"smartObjectId": 5
+				},
+				"HeaderBar.MainPageVisibilityJoin": {
+					"joinId": 2,
+					"smartObjectId": 5
+				},
+				"HeaderBar.SecurityPageVisibilityJoin": {
+					"joinId": 3,
+					"smartObjectId": 5
+				},
+				"HeaderBar.HomePageVisibilityJoin": {
+					"joinId": 4,
+					"smartObjectId": 5
+				},
+				"HeaderBar.LightingPageVisibilityJoin": {
+					"joinId": 5,
+					"smartObjectId": 5
+				},
+				"HeaderBar.ShadesPageVisibilityJoin": {
+					"joinId": 6,
+					"smartObjectId": 5
+				},
+				"HeaderBar.CamerasPageVisibilityJoin": {
+					"joinId": 7,
+					"smartObjectId": 5
+				},
+				"PowerPopUp.NoButtonPress": {
+					"joinId": 1,
+					"smartObjectId": 7
+				},
+				"PowerPopUp.YesButtonPress": {
+					"joinId": 2,
+					"smartObjectId": 7
+				},
+				"PowerPopUp.WholehouseOffPress": {
+					"joinId": 3,
+					"smartObjectId": 7
+				},
+				"MediaControl.DpadUpPress": {
+					"joinId": 1,
+					"smartObjectId": 8
+				},
+				"MediaControl.DpadDownPress": {
+					"joinId": 2,
+					"smartObjectId": 8
+				},
+				"MediaControl.DpadLeftPress": {
+					"joinId": 3,
+					"smartObjectId": 8
+				},
+				"MediaControl.DpadRightPress": {
+					"joinId": 4,
+					"smartObjectId": 8
+				},
+				"MediaControl.DpadEnterPress": {
+					"joinId": 5,
+					"smartObjectId": 8
+				},
+				"MediaControl.BackButtonPress": {
+					"joinId": 6,
+					"smartObjectId": 8
+				},
+				"MediaControl.MenuButtonPress": {
+					"joinId": 7,
+					"smartObjectId": 8
+				},
+				"MediaControl.PlayButtonPress": {
+					"joinId": 8,
+					"smartObjectId": 8
+				},
+				"MediaControl.PauseButtonPress": {
+					"joinId": 9,
+					"smartObjectId": 8
+				},
+				"MediaControl.StopButtonPress": {
+					"joinId": 10,
+					"smartObjectId": 8
+				},
+				"MediaControl.FastForwardButtonPress": {
+					"joinId": 11,
+					"smartObjectId": 8
+				},
+				"MediaControl.RewindButtonPress": {
+					"joinId": 12,
+					"smartObjectId": 8
+				},
+				"MediaControl.TrackForwardButtonPress": {
+					"joinId": 13,
+					"smartObjectId": 8
+				},
+				"MediaControl.TrackBackButtonPress": {
+					"joinId": 14,
+					"smartObjectId": 8
+				},
+				"MediaControl.RecordButtonPress": {
+					"joinId": 15,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad1Press": {
+					"joinId": 16,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad2Press": {
+					"joinId": 17,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad3Press": {
+					"joinId": 18,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad4Press": {
+					"joinId": 19,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad5Press": {
+					"joinId": 20,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad6Press": {
+					"joinId": 21,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad7Press": {
+					"joinId": 22,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad8Press": {
+					"joinId": 23,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad9Press": {
+					"joinId": 24,
+					"smartObjectId": 8
+				},
+				"MediaControl.Keypad0Press": {
+					"joinId": 25,
+					"smartObjectId": 8
+				},
+				"MediaControl.KeypadStarPress": {
+					"joinId": 26,
+					"smartObjectId": 8
+				},
+				"MediaControl.KeypadPoundPress": {
+					"joinId": 27,
+					"smartObjectId": 8
+				},
+				"MediaControl.KeypadExtraPress": {
+					"joinId": 28,
+					"smartObjectId": 8
+				},
+				"CH5Keypad.Press0": {
+					"joinId": 1,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press1": {
+					"joinId": 2,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press2": {
+					"joinId": 3,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press3": {
+					"joinId": 4,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press4": {
+					"joinId": 5,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press5": {
+					"joinId": 6,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press6": {
+					"joinId": 7,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press7": {
+					"joinId": 8,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press8": {
+					"joinId": 9,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.Press9": {
+					"joinId": 10,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.PressStar": {
+					"joinId": 11,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.PressHash": {
+					"joinId": 12,
+					"smartObjectId": 9
+				},
+				"CH5Keypad.PressExtraButton": {
+					"joinId": 13,
+					"smartObjectId": 9
+				},
+				"MainPage.VolumeButtonList.VolumeUpPress": {
+					"joinId": 1,
+					"smartObjectId": 2
+				},
+				"MainPage.VolumeButtonList.VolumeDownPress": {
+					"joinId": 2,
+					"smartObjectId": 2
+				},
+				"MainPage.VolumeButtonList.VolumeMutePress": {
+					"joinId": 3,
+					"smartObjectId": 2
+				},
+				"MainPage.SourceList.Source1Press": {
+					"joinId": 1,
+					"smartObjectId": 3
+				},
+				"MainPage.SourceList.Source2Press": {
+					"joinId": 2,
+					"smartObjectId": 3
+				},
+				"MainPage.SourceList.Source3Press": {
+					"joinId": 3,
+					"smartObjectId": 3
+				},
+				"MainPage.SourceList.Source4Press": {
+					"joinId": 4,
+					"smartObjectId": 3
+				},
+				"MainPage.SourceList.Source5Press": {
+					"joinId": 5,
+					"smartObjectId": 3
+				},
+				"MainPage.SourceList.Source6Press": {
+					"joinId": 6,
+					"smartObjectId": 3
+				},
+				"MainPage.SourceList.Source7Press": {
+					"joinId": 7,
+					"smartObjectId": 3
+				},
+				"MainPage.SourceList.Source8Press": {
+					"joinId": 8,
+					"smartObjectId": 3
+				},
+				"MainPage.RoomList.Room1Press": {
+					"joinId": 1,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room2Press": {
+					"joinId": 2,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room3Press": {
+					"joinId": 3,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room4Press": {
+					"joinId": 4,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room5Press": {
+					"joinId": 5,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room6Press": {
+					"joinId": 6,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room7Press": {
+					"joinId": 7,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room8Press": {
+					"joinId": 8,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room9Press": {
+					"joinId": 9,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room10Press": {
+					"joinId": 10,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room11Press": {
+					"joinId": 11,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room12Press": {
+					"joinId": 12,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room13Press": {
+					"joinId": 13,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room14Press": {
+					"joinId": 14,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room15Press": {
+					"joinId": 15,
+					"smartObjectId": 4
+				},
+				"MainPage.RoomList.Room16Press": {
+					"joinId": 16,
+					"smartObjectId": 4
+				},
+				"HeaderBar.Menu.Theme": {
+					"joinId": 1,
+					"smartObjectId": 6
+				},
+				"HeaderBar.Menu.SystemSettings": {
+					"joinId": 2,
+					"smartObjectId": 6
+				}
+			}
+		}
+	}
+}

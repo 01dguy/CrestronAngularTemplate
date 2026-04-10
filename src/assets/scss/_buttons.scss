@@ -1,0 +1,54 @@
+// Import our global variables.
+@import 'variables';
+// Import our mixins (functions).
+@import 'mixins';
+
+// This has been updated to use the var() to determine button properties based on theme selected.
+.crestron-button {
+  @include clear-button-styling;
+  // Include the full-size class to make the default button full size (fill the parent container).
+  @include full-size;
+  // Set the background colour of the button.
+  //background-color: $button-background;
+  background-color: var(--button-background);
+  // Set the font size of the button to 2rem (32px).
+  font-size: 2rem;
+  // Set the text align of the button to center.
+  text-align: center;
+  // Set the border radius of the button to 0.4rem (~6px).
+  border-radius: 0.5rem;
+  // Drop shadow for the button.
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  // Add a transition to the button so that the background colour changes smoothly.
+  transition: background-color 0.2s ease-in-out;
+
+  // If the button has an image (icon) inside it.
+  img {
+    // Set the width and height of the image to 50% of the button size.
+    height: 50%;
+    width: 50%;
+  }
+  
+  // If the button is selected.
+  // This is a class that we will add to the button when it is selected.
+  &.selected {
+    // Set the background colour of the button to the selected background color.
+    //background-color:$button-background-selected;
+    background-color: var(--button-background-selected);
+  }
+
+  // If the button is active.
+  &:active {
+    // Set the background colour of the button to the active background colour.
+    //background-color:$button-background-active;
+    background-color: var(--button-background-active);
+  }
+
+  /*
+  // Uncomment this code if you want to add a hover effect to the button.
+  // If the button is hovered over.
+  &:hover{
+      // Set the styling here for when the button is hovered over.
+  }
+  */
+}

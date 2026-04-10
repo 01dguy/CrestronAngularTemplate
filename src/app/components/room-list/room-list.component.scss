@@ -1,0 +1,56 @@
+@import 'mixins';
+
+// .dropdown__room-name {
+//     flex: 2;
+//     position: relative;
+//     display: inline-block;
+//   }
+  
+  .dropdown-button {
+    background-color: rgba(0, 0, 0, 0.2); // semi-transparent black
+    color: white;
+    padding: 0.5rem 2.5rem;
+    width: 70%;
+    font-size: 2.2rem;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  // Changes bottom border radius of the button when the dropdown is active for a seamless look
+  .dropdown-button.dropdown-active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  // The dropdown box
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    width: 70%;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; // keeps dropdown on top of other elements
+    backdrop-filter: blur(8px); // blurs content behind the dropdown
+    max-height: 80vh; // limits dropdown height to 80% of the viewport height
+    overflow-y: auto;
+  }
+
+  // The text on the dropdown items
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px; // top and bottom padding of clickable dropdown items
+    font-size: 2rem;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    background-color: transparent;
+  
+    &:active {
+      background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2), transparent);
+      font-size: 2.2rem;
+    }
+  }

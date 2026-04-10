@@ -1,0 +1,53 @@
+@import 'mixins';
+
+.title-bar {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: solid 0.0625rem rgba(0, 0, 0, 0.6);
+  display: flex;
+  gap: 0.5rem;
+  height: 5rem;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  width: 100%;
+
+  &__button--power,
+  &__button--return,
+  &__button--menu {
+    @include clear-button-styling;
+    height: 4.5rem;
+    width: 4.5rem;
+    padding: 0.5rem;
+
+    &__icon {
+      height: 100%;
+      width: 100%;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  &__divider {
+    border-right: solid white 0.0625rem;
+    height: 85%;
+    margin: 0 0.8rem; // Applies margin to left and right of the divider
+  }
+
+  &__page-name {
+    flex: 1;
+    font-size: 2.5rem;
+    margin-left: 0.2rem;
+  }
+
+  &__weather {
+    height: 100%;
+  }
+}
+
+.title-bar__room-name {
+  flex: 2;
+  position: relative;
+  display: inline-block;
+}

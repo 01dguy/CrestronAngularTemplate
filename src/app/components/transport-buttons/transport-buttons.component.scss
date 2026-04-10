@@ -1,0 +1,36 @@
+@import 'mixins';
+@import 'buttons';
+
+.transport {
+    @include display-flex-column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; // gap between buttons
+    position: relative;
+    margin: 1rem;
+    min-width: 0;
+
+    .row1 {
+        @include display-flex-row;
+        gap: 1.5rem;
+    }
+    
+    .row2 {
+        @include display-flex-row;
+        gap: 1.5rem;
+    }
+}
+
+.transport button {
+    @extend .crestron-button;
+    flex: 1 1 auto; // Not sure this does anything useful here.
+    width: 5rem;
+    height: 3rem; 
+    font-size: 1.4rem; // font size of text on the button
+
+    // Transport images on buttons.
+    img {
+        height: 50%;
+        width: 50%;
+    }
+}

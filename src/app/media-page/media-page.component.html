@@ -1,0 +1,38 @@
+<div class="page" @pageIn>
+    <app-power-confirm></app-power-confirm>
+  
+    <div class="content">
+      <app-source-list [sources]="Sources"></app-source-list>
+  
+      <div class="control-container">
+        <span class="source-title">
+          {{ getCurrentSourceText() }}
+        </span>
+        <!-- ngSwitchCase logic to display source pop-up, Order determined by enum in .ts file.
+        Default has been modified to show no page at all. Modify this for your system -->
+        <div class="source-content" [ngSwitch]="getSource()">
+        <!-- <div *ngIf="getSource() !== Source.None" class="source-content" [ngSwitch]="getSource()"> -->
+          <ng-container *ngSwitchCase="Source.AirMedia">
+            <app-airmedia></app-airmedia>
+          </ng-container>
+          <ng-container *ngSwitchCase="Source.AppleTV">
+            <app-apple-tv></app-apple-tv>
+          </ng-container>
+          <ng-container *ngSwitchCase="Source.NvxInfo">
+            <app-nvx-info></app-nvx-info>
+          </ng-container>
+          <ng-container *ngSwitchCase="Source.Stb">
+            <app-stb></app-stb>
+          </ng-container>
+          <ng-container *ngSwitchCase="Source.None">
+            <!-- Blank page content when no source is selected -->
+            <div class="blank-page"></div>
+          </ng-container>
+          <ng-container *ngSwitchDefault></ng-container>
+        </div>
+      </div>
+    </div>
+    <div>
+      <app-volume-footer></app-volume-footer>
+    </div>
+  </div>

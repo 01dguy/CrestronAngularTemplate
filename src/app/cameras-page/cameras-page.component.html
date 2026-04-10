@@ -1,0 +1,43 @@
+<div class="camera-page-container" @pageIn>
+  <div class="camera-grid">
+    <div 
+      class="camera-tile" 
+      *ngFor="let camera of cameras; let i = index" 
+      (click)="openCameraModal(i)"
+    >
+      <!-- Placeholder for RTSP stream preview (replace with actual player as needed) -->
+      <div class="camera-preview">
+        <span>Camera {{ i + 1 }}</span>
+        <small>{{ camera.rtspUrl }}</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Pop-up -->
+  <div 
+    class="camera-modal-backdrop" 
+    *ngIf="modalOpen" 
+    (click)="closeCameraModal()"
+  >
+    <div 
+      class="camera-modal" 
+      (click)="$event.stopPropagation()"
+      [style.width]="'80vw'" 
+      [style.height]="'80vh'"
+      [@fadeInOut]="modalOpen"
+      (touchstart)="onModalTouchStart($event)"
+      (touchmove)="onModalTouchMove($event)"
+      (touchend)="onModalTouchEnd()"
+    >
+      <h2>Camera {{ selectedCameraIndex + 1 }}</h2>
+      <div class="camera-modal-content">
+        <!-- Replace with actual RTSP player integration as needed -->
+        <p>RTSP Stream: {{ cameras[selectedCameraIndex].rtspUrl }}</p>
+        <div class="camera-player-placeholder">
+          <!-- Video player or image preview here -->
+          <span>Camera Stream Preview</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

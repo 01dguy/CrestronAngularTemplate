@@ -1,16 +1,19 @@
 {
   "name": "master-template",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "archive": "ch5-cli archive -c src/config/Master.cse2j -p MasterTemplate -d dist/master-template/browser -o dist",
+    "deploy": "ch5-cli deploy -H 192.168.4.188 -t controlsystem dist/MasterTemplate.ch5z",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.10",
+    "@angular/cdk": "^18.2.11",
     "@angular/common": "^18.2.10",
     "@angular/compiler": "^18.2.10",
     "@angular/core": "^18.2.10",
@@ -18,6 +21,10 @@
     "@angular/platform-browser": "^18.2.10",
     "@angular/platform-browser-dynamic": "^18.2.10",
     "@angular/router": "^18.2.10",
+    "@crestron/ch5-crcomlib": "^2.8.0",
+    "@crestron/ch5-theme": "^2.8.0",
+    "@crestron/ch5-utilities": "^0.1.52",
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

@@ -1,0 +1,16 @@
+<div class="center-container" @pageIn>
+  <div class="lighting-grid">
+    <div class="lighting-tile" *ngFor="let room of rooms">
+      <div class="tile-header">
+        <label class="switch">
+          <input type="checkbox" [(ngModel)]="room.on">
+          <span class="slider"></span>
+        </label>
+        <span class="switch-label">{{ room.on ? 'On' : 'Off' }}</span>
+      </div>
+      <div class="tile-footer">
+        {{ room.name }}
+      </div>
+    </div>
+  </div>
+</div>

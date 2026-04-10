@@ -1,0 +1,64 @@
+@import 'mixins';
+
+.power-confirm {
+  align-items: center;
+  backdrop-filter: blur(0.25rem);
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+
+  &__title {
+    color: white;
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem; // gap between button groups
+
+    &-group {
+      display: flex;
+      justify-content: center;
+      gap: 4rem; // gap between Yes and No buttons
+    }
+  }
+
+  &__button {
+    @include clear-button-styling;
+    align-items: center;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    font-size: 3rem;
+    height: 12rem;
+    justify-content: center;
+    width: 17rem;
+    border: 1px solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Not sure drop shadow works with blurred background
+
+    &--red {
+      background-color: rgba(184, 55, 55, 0.543);
+    }
+
+    &--green {
+      background-color: rgb(26, 172, 26, 0.543);
+    }
+
+    &--blue {
+      background-color: rgb(44, 101, 186, 0.543);
+      width: calc(2 * 17rem + 4rem); // Combined width of red and green buttons plus the gap
+      height: 8rem; // Adjusted height
+    }
+  }
+}

@@ -1,0 +1,16 @@
+title-bar.component contains power functions and Room Name text.
+weather.component.ts contains Lat/Long and Name for weather city. 
+main-page.component is where all Component imports happen and source logic.
+styles.scss contains project screen aspect ratios
+Number of Sources and their Source.Name exists in main-page.component.ts
+Master.cse2j is the new contract I created 
+added a service, source.service.ts to communicate from power-confirm to main-page for clearing source pages.
+When I try to import AppModule for the CH5-Keypad, I get a blank page.
+media-page is the new main-page.
+
+To build, archive and deploy project to touchscreen:
+ - ng build
+ - npm run archive
+ - npm run deploy
+
+Make sure to modify the "deploy" ip address in package.json file.

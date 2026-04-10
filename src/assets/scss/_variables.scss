@@ -1,0 +1,41 @@
+//This manages the color scheme of the web app when imported where needed.
+
+// Initial color theme on startup.
+$background: white;
+$button-background: rgb(0, 0, 0, 0.3);
+$button-background-active:   rgb(0, 0, 0, 0.6);
+$button-background-selected:   rgb(0, 0, 0, 0.6);
+$background-image: url('./assets/images/backgrounds/background.webp');
+
+// Sets the theme from the menu-module-popup.component
+:root {
+  
+    // The background color of the web app.
+    --background: white;
+    // The button background color.
+    --button-background: rgb(0, 153, 255);
+    // The button background color when the button is active.
+    --button-background-active: rgb(0, 115, 191);
+    // The button background color when the button is selected.
+    --button-background-selected: rgb(0, 115, 191);
+    // The button background image.
+    //--background-image: url('./assets/images/backgrounds/background.webp');
+  }
+  
+  // Use the CSS custom properties in your SCSS
+  body {
+    background-color: var(--background);
+    background-image: var(--background-image);
+  }
+
+  .button {
+    background-color: var(--button-background);
+  
+    &:active {
+      background-color: var(--button-background-active);
+    }
+  
+    &.selected {
+      background-color: var(--button-background-selected);
+    }
+  }

@@ -19,13 +19,12 @@ export class HomePageComponent {
 
   constructor(private titleService: TitleService) { }
 
-  /** Page Selection **/
+  // Pulses the join that tells the control system which page to show.
   press(page: string): void {
-    // Trigger for router
     CrComLib.pulseDigital(`HeaderBar.${page}PageVisibilityJoin`, 100);
-    // Set page visibility service for displaying appropriate elements in title-bar.
+    // Keep title-bar controls in sync with page context.
     this.titleService.setCurrentPageVisibility(page, true); 
-    this.titleService.setCurrentPageVisibility('Home', false); // Show the back arrow
+    this.titleService.setCurrentPageVisibility('Home', false);
   }
 
 }

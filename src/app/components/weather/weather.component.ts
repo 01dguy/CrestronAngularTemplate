@@ -13,14 +13,12 @@ import { HeadingPipe } from '../../pipes/heading/heading.pipe';
 import { FadeInOutAnimation } from '../../animations/animations';
 import { WeatherModalPopupComponent } from './weather-modal-popup/weather-modal-popup.component';
 
-// Temporary API Key for testing (1000 calls per day limit).
-// Will be deactivated after the project is complete.
+// TODO: move API key out of source before production use.
 const apiKey = '145bb2f5e2aab2c4aedbb3c32d0b3bc2';
 
-// Define a coordinate type for the location of the weather data.
 type Coordinates = { latitude: number; longitude: number };
-// The location of the weather data (Springfield, MO).
-const location: Coordinates = { latitude: 37.21533, longitude: -93.29824 }; // Springfield, MO
+// Default weather location for the template.
+const location: Coordinates = { latitude: 37.21533, longitude: -93.29824 };
 
 enum Units {
   imperial,
@@ -36,12 +34,11 @@ enum Units {
   animations: [FadeInOutAnimation],
 })
 export class WeatherComponent implements OnInit, OnDestroy {
-  // Reference to the weather modal popup.
+  // Modal reference for expanded forecast view.
   popup = viewChild<WeatherModalPopupComponent>('modalPopup'); 
-  // Action to open the weather widget.
+  // Toggles rendering after data has loaded.
   visible = signal(false);
 
-  // The location of the weather data.
   readonly city = 'Springfield, MO';
 
   compassStyle = computed(
@@ -52,18 +49,16 @@ export class WeatherComponent implements OnInit, OnDestroy {
   constructor(private ngZone: NgZone) {}
 
   ngOnInit() {
-    // Lets go and get the weather data.
-    // This could be run on a timer or in response to a user action (refresh button).
+    // Initial weather fetch; can also be refreshed on a timer/user action.
     this.fetchOpenWeatherData(location, Units.imperial, apiKey);
   }
 
   ngOnDestroy(): void {
   }
 
-  /** Fetch Open Weather Data */
+  // Fetches weather from OpenWeather and updates widget state.
   fetchOpenWeatherData(coordinates: Coordinates, units: Units, apiKey: string) {
     fetch(
-      // './assets/weather/data/weather-data.json'
       `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=${Units[units]}&appid=${apiKey}`
     )
       .then(
@@ -73,12 +68,10 @@ export class WeatherComponent implements OnInit, OnDestroy {
       .then((data) => {
         this.ngZone.run(() => {
           this.weatherData.set(data);
-          // Once the weather data has been populated, we can make the widget visible.
           this.visible.set(true);
         });
       })
       .catch((error) => {
-        // Log any errors to the console
         console.error(error);
       });
   }

@@ -23,20 +23,22 @@ declare var CrComLib: CrComLib;
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss'],
   imports: [
-    CommonModule, // for *ngIf
-    DragDropModule // for drag and drop
+    CommonModule,
+    DragDropModule
   ],
 })
 export class RoomListComponent implements OnInit, OnDestroy {
-  @Input() rooms = 8; // declare the number of rooms
+  // Number of room rows to subscribe/render.
+  @Input() rooms = 8;
   titleSubscription: string[] = new Array(this.rooms);
   selectedSubscription: string[] = new Array(this.rooms);
-  roomSubscription!: string; // text on room button dropdown to update to current room
+  // Subscription ID for current-room name in header.
+  roomSubscription!: string;
   room = signal('');
   dropdownVisible = false;
   RoomButton!: WritableSignal<(RoomButton & { originalIndex: number })[]>;
 
-  private shouldSort = false; // Flag to control sorting
+  private shouldSort = false;
 
   constructor(
     private ngZone: NgZone,
@@ -45,14 +47,14 @@ export class RoomListComponent implements OnInit, OnDestroy {
     ) {}
 
   ngOnInit(): void {
-    // new method to create room dropdown with originalIndex
+    // Preserve original join index even after drag-and-drop reorder.
     const defaultButtons = new Array(this.rooms).fill(null).map((_, idx) => Object.assign(new RoomButton(), { originalIndex: idx }));
-    // Try to restore order from localStorage
+    // Restore previously saved visual order.
     const savedOrder = localStorage.getItem('roomListOrder');
     let orderedButtons: (RoomButton & { originalIndex: number })[] = defaultButtons;
     if (savedOrder) {
       const order: number[] = JSON.parse(savedOrder);
-      // Build a new array by mapping order to buttons, ensuring no duplicates
+      // Rebuild ordered list defensively to avoid duplicate/missing rows.
       const used = new Set<number>();
       orderedButtons = order
         .map(origIdx => {
@@ -61,14 +63,11 @@ export class RoomListComponent implements OnInit, OnDestroy {
           return btn;
         })
         .filter(Boolean) as (RoomButton & { originalIndex: number })[];
-      // Add any missing buttons (in case of mismatch)
+      // Append any rows missing from saved data.
       const missing = defaultButtons.filter(b => !used.has(b.originalIndex));
       orderedButtons = [...orderedButtons, ...missing];
     }
     this.RoomButton = signal(orderedButtons);
-
-    // TEMP: Clear room order for testing on device
-    //localStorage.removeItem('roomListOrder');
 
     for (let i = 0; i < this.rooms; i++) {
       this.titleSubscription[i] = CrComLib.subscribeState(
@@ -90,10 +89,10 @@ export class RoomListComponent implements OnInit, OnDestroy {
       );
     }
 
-    // Subscribe to the room join for indirect text.
+    // Updates selected room label in the header dropdown trigger.
     this.roomSubscription = CrComLib.subscribeState(
       's',
-      'HeaderBar.RoomNameText', // Room Name
+      'HeaderBar.RoomNameText',
       (room: string) => {
         console.log('Info -> Received the room name: ' + room);
         this.ngZone.run(() => this.room.set(room));
@@ -116,7 +115,6 @@ export class RoomListComponent implements OnInit, OnDestroy {
       );
     }
 
-    // Unsubscribe from the room join when the component is destroyed.
     CrComLib.unsubscribeState(
       's',
       'HeaderBar.RoomNameText',
@@ -124,7 +122,7 @@ export class RoomListComponent implements OnInit, OnDestroy {
     );
   }
 
-  // Update a room button by its original index (not UI index)
+  // Update by original join index instead of visual row index.
   updateRoomButtonByOriginalIndex(originalIndex: number, key: keyof RoomButton, value: any) {
     this.ngZone.run(() => {
       this.RoomButton.update((arr) =>
@@ -134,28 +132,26 @@ export class RoomListComponent implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  // New Method (This doesn't appear to be used anywhere)
+  // Presses the matching Room{n}Press join for the selected visual row.
   selectRoom(index: number): void {
     const roomButton = this.RoomButton()[index];
     if (roomButton) {
       console.log(`Room pressed: ${roomButton.title || 'Unknown Room'}`);
       CrComLib.pulseDigital(`MainPage.RoomList.Room${roomButton.originalIndex + 1}Press`);
-      this.dropdownVisible = false; // close the dropdown
+      this.dropdownVisible = false;
     } else {
       console.warn(`Room button at index ${index} not found`);
     }
   }
 
-  // New Method
   updateRoomButton(index: number, key: keyof RoomButton, value: any) {
     console.log(`Updating RoomButton at index ${index}: ${key} = ${value}`);
     this.ngZone.run(() => {
       this.RoomButton.update((arr) =>
         arr.map((v, i) => (i === index ? { ...v, [key]: value } : v))
       );
-      //this.shouldSort = true; // Set the flag to sort
     });
-    this.cdr.detectChanges(); // Trigger change detection
+    this.cdr.detectChanges();
   }
 
   sortRoomButtons() {
@@ -163,23 +159,21 @@ export class RoomListComponent implements OnInit, OnDestroy {
       this.RoomButton.update((arr) =>
         arr.slice().sort((a, b) => (a.title || '').localeCompare(b.title || ''))
       );
-      this.shouldSort = false; // Reset the flag
-      this.cdr.detectChanges(); // Trigger change detection
+      this.shouldSort = false;
+      this.cdr.detectChanges();
     }
   }
 
-  // For room dropdown menu
   toggleDropdown(event: Event): void {
     event.stopPropagation();
     this.dropdownVisible = !this.dropdownVisible;
   }
 
-  // Close the dropdown other than when room selected.
   closeDropdown(): void {
     this.dropdownVisible = false;
   }
 
-  // Closes dropdown when clicking outside of it
+  // Close dropdown when clicking anywhere outside this component.
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     const clickedInside = this.elementRef.nativeElement.contains(event.target);
@@ -188,9 +182,8 @@ export class RoomListComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Handle the drop event to reorder rooms
+  // Persist drag-and-drop order locally so it survives reloads.
   drop(event: CdkDragDrop<RoomButton[]>): void {
-    // Prevent unnecessary updates if dropped onto itself
     if (event.previousIndex === event.currentIndex) {
       return;
     }
@@ -198,27 +191,21 @@ export class RoomListComponent implements OnInit, OnDestroy {
       const currentRooms = [...this.RoomButton()];
       moveItemInArray(currentRooms, event.previousIndex, event.currentIndex);
       this.RoomButton.set(currentRooms);
-      // Save the new order to localStorage
       const order = currentRooms.map(btn => btn.originalIndex);
       localStorage.setItem('roomListOrder', JSON.stringify(order));
-      // Log the new order for debugging
       console.log('Room order after drag-and-drop:');
       currentRooms.forEach((button, index) => {
         console.log(`Index ${index}: Title = ${button.title}, State = ${button.state}`);
       });
 
-      // Optionally, notify the backend of the new order (if required)
       this.syncOrderWithBackend(currentRooms);
       this.cdr.detectChanges();
     });
   }
 
-  // Optional: Sync the new order with the backend (if your system supports it)
+  // Stub for systems that need persisted order mirrored to backend logic.
   private syncOrderWithBackend(rooms: RoomButton[]): void {
-    // Example: Send the new order to the backend via CrComLib or another service
     rooms.forEach((room, index) => {
-      // If your backend tracks room positions, update them here
-      // e.g., CrComLib.setState('s', `MainPage.RoomList.Room${index + 1}Text`, room.title);
       console.log(`Simulating backend sync: Room ${index + 1} = ${room.title}`);
     });
   }

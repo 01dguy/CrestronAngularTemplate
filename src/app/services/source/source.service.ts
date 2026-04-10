@@ -1,5 +1,4 @@
-// Service for sharing Source name and state between components
-// This service may only be necessary for single room systems
+// Shared source state used by multiple media-related components.
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -16,5 +15,3 @@ export class SourceService {
     this.source.next(source);
   }
 }
-
-/* For instance, I'm using this to choose Source.None so the subpages clear upon Power Off. */

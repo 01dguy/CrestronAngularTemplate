@@ -1,4 +1,4 @@
-// Service used in the title bar to set the visibility of the title bar elements.
+// Shared page-visibility flags used by header controls.
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 

@@ -1,13 +1,10 @@
-// Import necessary functions from Angular animations module
 import { transition, style, animate, trigger } from '@angular/animations';
 
-// Pop-up animations
+// Shared enter/leave fades for popups and page regions.
 const enterTransition = transition(':enter', [
-  // Initially, the element is fully transparent (opacity: 0)
   style({
     opacity: 0,
   }),
-  // Over 0.5 seconds, animate the element to be fully opaque (opacity: 1)
   animate(
     '0.5s ease-in',
     style({
@@ -17,11 +14,9 @@ const enterTransition = transition(':enter', [
 ]);
 
 const leaveTransition = transition(':leave', [
-  // Initially, the element is fully opaque (opacity: 1)
   style({
     opacity: 1,
   }),
-  // Over 0.5 seconds, animate the element to be fully transparent (opacity: 0)
   animate(
     '0.5s ease-out',
     style({
@@ -30,13 +25,11 @@ const leaveTransition = transition(':leave', [
   ),
 ]);
 
-// Page flip animations
+// Slightly faster transitions used for page containers.
 const pageInTransition = transition(':enter', [
-  // Initially, the element is fully transparent (opacity: 0)
   style({
     opacity: 0,
   }),
-  // Over 0.2 seconds, animate the element to be fully opaque (opacity: 1)
   animate(
     '0.3s ease-in',
     style({
@@ -46,11 +39,9 @@ const pageInTransition = transition(':enter', [
 ]);
 
 const pageOutTransition = transition(':leave', [
-  // Initially, the element is fully opaque (opacity: 1)
   style({
     opacity: 1,
   }),
-  // Over 0.2 seconds, animate the element to be fully transparent (opacity: 0)
   animate(
     '0.3s ease-out',
     style({
@@ -59,7 +50,7 @@ const pageOutTransition = transition(':leave', [
   ),
 ]);
 
-// Combined fadeInOut trigger for modal popups and similar use
+// Single trigger variant used by components that prefer one animation binding.
 export const fadeInOut = trigger('fadeInOut', [
   transition(':enter', [
     style({ opacity: 0 }),
@@ -71,8 +62,7 @@ export const fadeInOut = trigger('fadeInOut', [
   ])
 ]);
 
-// Export the animations, associating each with a trigger
-// 'fadeIn' will trigger the enter transition, and 'fadeOut' will trigger the leave transition
+// Exported as an array for easy reuse in component metadata.
 export const FadeInOutAnimation = [
   trigger('fadeIn', [enterTransition]),
   trigger('fadeOut', [leaveTransition]),

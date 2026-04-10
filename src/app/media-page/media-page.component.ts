@@ -1,28 +1,19 @@
 import { Component, OnDestroy, OnInit, signal, NgZone } from '@angular/core';
-import { CommonModule } from '@angular/common'; // for *ng
+import { CommonModule } from '@angular/common';
 import { FadeInOutAnimation } from '../animations/animations';
 
-// The AirMediaComponent is used to display the AirMedia popup.
 import { AirmediaComponent } from '../popups/airmedia/airmedia.component';
-// The AppleTvComponent is used to display the Apple TV popup.
 import { AppleTvComponent } from '../popups/apple-tv/apple-tv.component';
-// The NvxInfoComponent is used to display the NvxInfo popup.
 import { NvxInfoComponent } from '../popups/nvx-info/nvx-info.component';
-// The PowerConfirmComponent is used to display the PowerConfirm popup.
 import { PowerConfirmComponent } from '../popups/power-confirm/power-confirm.component';
-// The SourceListComponent is used to display the SourceList widget.
 import { SourceListComponent } from '../components/source-list/source-list.component';
-// Service added to modify the source on a power off event.
 import { SourceService } from '../services/source/source.service';
-// Used for new Footer Volume widget.
 import { VolumeFooterComponent } from '../components/volume-footer/volume-footer.component';
-// Set Top Box Component
 import { StbComponent } from '../popups/stb/stb.component';
 
 declare var CrComLib: CrComLib;
 
-// These declare the Source.name to be used in the Switch/Case statement for page selection.
-// These also determine the order of the sources in the SourceList.
+// Source order maps directly to SourceList joins and ngSwitch cases.
 export enum Source {
   None = -1,
   AirMedia,         // Source 1
@@ -39,42 +30,38 @@ export enum Source {
   templateUrl: './media-page.component.html',
   styleUrl: './media-page.component.scss',
   imports: [
-    CommonModule, // for *ng
+    CommonModule,
     AirmediaComponent,
     AppleTvComponent,
     NvxInfoComponent,
     PowerConfirmComponent,
     SourceListComponent,
-    //TitleBarComponent,
-    //VolumeComponent,
     VolumeFooterComponent,
     StbComponent,
   ],
   animations: [FadeInOutAnimation],
 })
 export class MediaPageComponent implements OnInit, OnDestroy {
-
-  // Declare the Source enum.
   Source = Source;
 
-  // Declare the Off source for SourceService.
+  // Tracks the most recent shared source value.
   offSource: Source = Source.None;
 
-  // The number of sources we are displaying.
+  // Number of active source joins to subscribe to.
   readonly Sources = 4;
 
   source = signal(Source.None);
 
-  // Declare the sourceSubscription array.
+  // Subscription IDs for Source{n} feedback joins.
   sourceSubscription: string[] = new Array(6);
 
-  // Declare the noneSourceSubscription for Source.None.
+  // Subscription ID for NoneSelected feedback join.
   noneSourceSubscription: string = '';
 
-  constructor(private ngZone: NgZone, private sourceService: SourceService) {} // SourceService added to constructor
+  constructor(private ngZone: NgZone, private sourceService: SourceService) {}
 
   ngOnInit(): void {
-    // Subscribe to currentSource from the SourceService.
+    // Keep local state in sync with cross-component source resets.
     this.sourceService.currentSource.subscribe(source => {
       this.ngZone.run(() => {
         this.offSource = source;
@@ -85,10 +72,9 @@ export class MediaPageComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.Sources; i++) {
       this.sourceSubscription[i] = CrComLib.subscribeState(
         'b',
-        // Our list is 1 based, so we add 1 to the index.
         `MainPage.SourceList.Source${i + 1}FB`,
         (state: boolean) => {
-          // If the state is false, return as we are going to convert positive states to the Source enum.
+          // Convert true feedback edge into the matching enum value.
           if(!state) return;
           this.ngZone.run(() => this.source.set(i));
           console.log('Info -> main-page -> The source is now: ' + Source[this.source()]);
@@ -96,12 +82,10 @@ export class MediaPageComponent implements OnInit, OnDestroy {
       );
     }
 
-    // Add subscription for Source.None testing.
     this.noneSourceSubscription = CrComLib.subscribeState(
       'b',
       `MainPage.SourceList.NoneSelectedFB`,
       (state: boolean) => {
-        // If the state is true, set the source to Source.None
         if (state) {
           this.ngZone.run(() => this.source.set(Source.None));
           console.log('Info -> main-page -> No source is selected.');
@@ -114,13 +98,11 @@ export class MediaPageComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.Sources; i++) {
       CrComLib.unsubscribeState(
         'b',
-        // Our list is 1 based, so we add 1 to the index.
         `MainPage.SourceList.Source${i + 1}FB`,
         this.sourceSubscription[i]
       );
     }
 
-    // Unsubscribe the Source.None subscription for testing
     CrComLib.unsubscribeState(
       'b',
       `MainPage.SourceList.NoneSelectedFB`,
@@ -129,15 +111,14 @@ export class MediaPageComponent implements OnInit, OnDestroy {
   }
 
   getSource(): Source {
-    // Check if no source is selected
+    // Explicitly keep None as the default/fallback source.
     if (this.source() === Source.None) {
       return Source.None;
     }
     return this.source();
   }
 
-  // Method to get the current source text based on the source.
-  // Modify this appropriately for your system.
+  // User-facing label for the active source panel.
   getCurrentSourceText(): string {
     switch (this.source()) {
       case Source.AirMedia:
@@ -154,9 +135,4 @@ export class MediaPageComponent implements OnInit, OnDestroy {
         return 'No Source Selected';
     }
   }
-  // Old way of getting the current source.
-  // Method to get the current source
-  // getSource(): Source {
-  //   return this.source();
-  // }
 }

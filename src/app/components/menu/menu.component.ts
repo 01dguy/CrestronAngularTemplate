@@ -16,10 +16,10 @@ import { CommonModule } from '@angular/common';
 })
 export class MenuComponent {
 
-  // Reference to the menu modal popup.
+  // Modal reference for menu settings panel.
   popup = viewChild<MenuModalPopupComponent>('modalPopup'); 
-  // Action to open the menu pop-out.
-  visible = signal(true); // I have to make this true to work, but shouldn't have to.
+  // Kept true so the menu trigger is always available.
+  visible = signal(true);
 
   open() {
     this.popup()?.open();

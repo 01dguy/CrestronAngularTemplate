@@ -19,11 +19,14 @@ declare var CrComLib: CrComLib;
   styleUrl: './source-list.component.scss',
 })
 export class SourceListComponent implements OnInit, OnDestroy {
+  // Number of source buttons to render.
   @Input() sources = 0;
 
+  // CrComLib subscription IDs for each source row.
   titleSubscription: string[] = new Array(this.sources);
   selectedSubscription: string[] = new Array(this.sources);
 
+  // Template state for source button labels/selection.
   SourceButton!: WritableSignal<SourceButton[]>;
 
   constructor(private ngZone: NgZone) {}
@@ -71,6 +74,7 @@ export class SourceListComponent implements OnInit, OnDestroy {
   }
 
   selectSource(index: number): void {
+    // Pulses Source{n}Press join (1-based index expected by control system).
     CrComLib.pulseDigital(`MainPage.SourceList.Source${index + 1}Press`);
   }
 

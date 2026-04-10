@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, signal, NgZone, NgModule } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common'; // for *ng
 import { FadeInOutAnimation } from '../animations/animations';
 
@@ -12,10 +12,6 @@ import { NvxInfoComponent } from '../popups/nvx-info/nvx-info.component';
 import { PowerConfirmComponent } from '../popups/power-confirm/power-confirm.component';
 // The SourceListComponent is used to display the SourceList widget.
 import { SourceListComponent } from '../components/source-list/source-list.component';
-// The TitleBarComponent is used to display the TitleBar widget.
-import { TitleBarComponent } from '../components/title-bar/title-bar.component';
-// The VolumeComponent is used to display the Volume widget.
-import { VolumeComponent } from '../components/volume/volume.component';
 // Service added to modify the source on a power off event.
 import { SourceService } from '../services/source/source.service';
 // Used for new Footer Volume widget.

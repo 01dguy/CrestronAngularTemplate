@@ -2,7 +2,7 @@ import { Component, NgZone, signal } from '@angular/core';
 import { FadeInOutAnimation } from '../../animations/animations';
 // Service added to modify the source on a power off event.
 import { SourceService } from '../../services/source/source.service';
-import { Source } from '../../main-page/main-page.component';
+import { Source } from '../../media-page/media-page.component';
 
 declare var CrComLib: CrComLib;
 

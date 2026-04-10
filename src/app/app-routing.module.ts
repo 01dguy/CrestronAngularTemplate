@@ -1,10 +1,7 @@
-// Currently to make this work I'm keeping everything in ' ' as main instead of media.
-
 import { NgModule, NgZone, OnDestroy } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { SecurityPageComponent } from './security-page/security-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
-//import { MainPageComponent } from './main-page/main-page.component';
 import { MediaPageComponent } from './media-page/media-page.component';
 import { LightingPageComponent } from './lighting-page/lighting-page.component';
 import { ShadesPageComponent } from './shades-page/shades-page.component';
@@ -16,7 +13,9 @@ declare var CrComLib: CrComLib;
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
-  { path: 'main-page', component: MediaPageComponent }, // MainPage is being redirected to MediaPage.
+  { path: 'media-page', component: MediaPageComponent },
+  // Backward-compatible alias for existing control-system logic.
+  { path: 'main-page', redirectTo: 'media-page', pathMatch: 'full' },
   { path: 'security-page', component: SecurityPageComponent },
   { path: 'lighting-page', component: LightingPageComponent },
   { path: 'shades-page', component: ShadesPageComponent },
@@ -72,7 +71,7 @@ export class AppRoutingModule implements OnDestroy {
             'Info -> The control system has requested we navigate to the main page.'
           );
           // Navigate to the main page.
-          this.navigate('main-page');
+          this.navigate('media-page');
         }
       }
     );

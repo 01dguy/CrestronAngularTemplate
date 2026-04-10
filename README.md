@@ -21,7 +21,7 @@ The app uses `@crestron/ch5-crcomlib` joins for control-system integration and b
 
 - `src/app/app.component.*`: root shell (`title-bar`, router outlet, system message popup)
 - `src/app/app-routing.module.ts`: route table + CrComLib subscriptions for page navigation joins
-- `src/app/media-page/*`: media/source host page (currently used as the main page)
+- `src/app/media-page/*`: canonical media/source host page
 - `src/app/components/title-bar/*`: page title text + power/home/menu actions
 - `src/app/components/source-list/*`: dynamic source list driven by joins
 - `src/app/popups/power-confirm/*`: power confirmation popup with timeout and source clear
@@ -137,9 +137,9 @@ This is generally correct for CH5 hosted panel content.
 
 ## Current Notes
 
-- `media-page` is currently acting as the main page route target (`main-page` route points to `MediaPageComponent`).
+- `media-page` is the canonical route/component for media source UI.
+- `main-page` route is kept as a compatibility alias that redirects to `media-page`.
 - `src/app/components/power/power.component.ts` and `.html` are currently empty placeholders.
-- `main-page.component.ts` still exists but is not the primary routed implementation.
 
 ## Test
 
